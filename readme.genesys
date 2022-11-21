@@ -1,0 +1,4 @@
+﻿dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.11
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 5.0.10
+
+dotnet ef dbcontext scaffold "Host=db-postgresql-sfo2-bms-do-user-10385926-0.b.db.ondigitalocean.com;Port=25060;Database=a360;Username=a360;Password=AVNS_BkjEl3Cw5BjK8cfiBa3 ;SslMode=Require; Trust Server Certificate=true;" Npgsql.EntityFrameworkCore.PostgreSQL -c Context -o Entities -d -f -n neva.entities

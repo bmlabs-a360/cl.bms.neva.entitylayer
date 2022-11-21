@@ -1,0 +1,4 @@
+
+dotnet nuget push bin\Release\cl.bms.hubpago.entitylayer.1.0.1.nupkg --api-key oy2ll5arsl3q7zlgvfoa757yaayjlwnelmuggj3lc4kgle --source https://api.nuget.org/v3/index.json
+
+
