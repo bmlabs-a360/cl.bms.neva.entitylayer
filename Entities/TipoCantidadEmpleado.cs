@@ -5,15 +5,19 @@ using System.Collections.Generic;
 
 namespace neva.entities
 {
-    public partial class PerfilPermiso
+    public partial class TipoCantidadEmpleado
     {
+        public TipoCantidadEmpleado()
+        {
+            Empresas = new HashSet<Empresa>();
+        }
+
         public Guid Id { get; set; }
-        public Guid PerfilId { get; set; }
         public string Nombre { get; set; }
         public string Detalle { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public bool? Activo { get; set; }
 
-        public virtual Perfil Perfil { get; set; }
+        public virtual ICollection<Empresa> Empresas { get; set; }
     }
 }

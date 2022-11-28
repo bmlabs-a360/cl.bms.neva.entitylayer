@@ -9,7 +9,10 @@ namespace neva.entities
     {
         public Usuario()
         {
+            Bitacoras = new HashSet<Bitacora>();
             UsuarioEmpresas = new HashSet<UsuarioEmpresa>();
+            UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
+            UsuarioSuscripcions = new HashSet<UsuarioSuscripcion>();
         }
 
         public Guid Id { get; set; }
@@ -19,13 +22,15 @@ namespace neva.entities
         public string Password { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public string Rut { get; set; }
+        public DateTime? FechaUltimoAcceso { get; set; }
         public DateTime? FechaCreacion { get; set; }
-        public DateTime? FechaUltimoacceso { get; set; }
         public bool? Activo { get; set; }
 
         public virtual Empresa Empresa { get; set; }
         public virtual Perfil Perfil { get; set; }
+        public virtual ICollection<Bitacora> Bitacoras { get; set; }
         public virtual ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
+        public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }
+        public virtual ICollection<UsuarioSuscripcion> UsuarioSuscripcions { get; set; }
     }
 }

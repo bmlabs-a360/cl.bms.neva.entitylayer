@@ -5,15 +5,13 @@ using System.Collections.Generic;
 
 namespace neva.entities
 {
-    public partial class UsuarioEmpresa
+    public partial class Bitacora
     {
         public Guid Id { get; set; }
         public Guid UsuarioId { get; set; }
-        public Guid EmpresaId { get; set; }
-        public DateTime? FechaCreacion { get; set; }
-        public bool? Activo { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime Fecha { get; set; }
 
-        public virtual Empresa Empresa { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }
