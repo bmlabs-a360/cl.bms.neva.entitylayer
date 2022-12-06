@@ -122,7 +122,9 @@ namespace neva.entities
                     .HasMaxLength(3000)
                     .HasColumnName("descripcion");
 
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasDefaultValueSql("now()");
 
                 entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
 
@@ -787,7 +789,7 @@ namespace neva.entities
 
                 entity.Property(e => e.PlanMejoraId).HasColumnName("plan_mejora_id");
 
-                entity.Property(e => e.PorcentajePlaMejora).HasColumnName("porcentaje_pla_mejora");
+                entity.Property(e => e.PorcentajePlanMejora).HasColumnName("porcentaje_plan_mejora");
 
                 entity.Property(e => e.PorcentajeRespuestas).HasColumnName("porcentaje_respuestas");
 
@@ -1039,11 +1041,6 @@ namespace neva.entities
                     .HasColumnName("activo")
                     .HasDefaultValueSql("false");
 
-                entity.Property(e => e.Apellidos)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .HasColumnName("apellidos");
-
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(255)
@@ -1068,6 +1065,10 @@ namespace neva.entities
                     .HasColumnName("password");
 
                 entity.Property(e => e.PerfilId).HasColumnName("perfil_id");
+
+                entity.Property(e => e.Telefono)
+                    .HasMaxLength(255)
+                    .HasColumnName("telefono");
 
                 entity.HasOne(d => d.Empresa)
                     .WithMany(p => p.Usuarios)

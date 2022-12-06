@@ -13,7 +13,7 @@ namespace neva.entities
         public Guid PlanMejoraId { get; set; }
         public int Madurez { get; set; }
         public int PorcentajeRespuestas { get; set; }
-        public int PorcentajePlaMejora { get; set; }
+        public int PorcentajePlanMejora { get; set; }
         public DateTime FechaUltimoAcceso { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public bool? Activo { get; set; }
