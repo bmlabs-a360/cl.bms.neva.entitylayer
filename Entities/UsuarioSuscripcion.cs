@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
+namespace neva.entities;
 
-namespace neva.entities
+public partial class UsuarioSuscripcion
 {
-    public partial class UsuarioSuscripcion
-    {
-        public Guid Id { get; set; }
-        public Guid UsuarioId { get; set; }
-        public DateTime FechaExpiracion { get; set; }
-        public DateTime TiempoSuscripcion { get; set; }
-        public DateTime? FechaCreacion { get; set; }
-        public bool? Activo { get; set; }
+    public Guid Id { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
-    }
+    public Guid UsuarioId { get; set; }
+
+    public DateTime FechaExpiracion { get; set; }
+
+    public DateTime TiempoSuscripcion { get; set; }
+
+    public DateTime? FechaCreacion { get; set; }
+
+    public bool? Activo { get; set; }
+
+    public virtual Usuario Usuario { get; set; }
 }
