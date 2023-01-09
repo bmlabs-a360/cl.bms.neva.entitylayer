@@ -25,7 +25,11 @@ public partial class PlanMejora
 
     public bool? Activo { get; set; }
 
+    public Guid EvaluacionId { get; set; }
+
     public virtual Alternativa Alternativa { get; set; }
+
+    public virtual Evaluacion IdNavigation { get; set; }
 
     public virtual SegmentacionArea SegmentacionArea { get; set; }
 

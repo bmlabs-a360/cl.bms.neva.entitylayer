@@ -424,6 +424,7 @@ public partial class Context : DbContext
                 .HasDefaultValueSql("false")
                 .HasColumnName("activo");
             entity.Property(e => e.AlternativaId).HasColumnName("alternativa_id");
+            entity.Property(e => e.EvaluacionId).HasColumnName("evaluacion_id");
             entity.Property(e => e.FechaCreacion)
                 .HasDefaultValueSql("now()")
                 .HasColumnType("timestamp without time zone")
@@ -442,6 +443,11 @@ public partial class Context : DbContext
                 .HasForeignKey(d => d.AlternativaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_plan_mejora_alternativa_id");
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.PlanMejora)
+                .HasForeignKey<PlanMejora>(d => d.Id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("plan_mejora_fk");
 
             entity.HasOne(d => d.SegmentacionArea).WithMany(p => p.PlanMejoras)
                 .HasForeignKey(d => d.SegmentacionAreaId)
@@ -635,25 +641,20 @@ public partial class Context : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_respuesta_evaluacion_empresa_id");
 
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Respuestum)
-                .HasForeignKey<Respuesta>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("respuesta_fk");
-
             entity.HasOne(d => d.Pregunta).WithMany(p => p.Respuesta)
                 .HasForeignKey(d => d.PreguntaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_respuesta_pregunta_id");
 
-            entity.HasOne(d => d.TipoDiferenciaRelacionada).WithMany(p => p.Respuesta)
-                .HasForeignKey(d => d.TipoDiferenciaRelacionadaId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_respuesta_tipo_diferencia_relacionada_id");
-
             entity.HasOne(d => d.TipoImportancia).WithMany(p => p.Respuesta)
                 .HasForeignKey(d => d.TipoImportanciaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_respuesta_tipo_importancia_id");
+
+            entity.HasOne(d => d.Usuario).WithMany(p => p.Respuesta)
+                .HasForeignKey(d => d.UsuarioId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_respuesta_usuario_id");
         });
 
         modelBuilder.Entity<SegmentacionArea>(entity =>

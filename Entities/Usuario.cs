@@ -31,7 +31,7 @@ public partial class Usuario
 
     public virtual Perfil Perfil { get; set; }
 
-    public virtual Respuesta Respuestum { get; set; }
+    public virtual ICollection<Respuesta> Respuesta { get; } = new List<Respuesta>();
 
     public virtual ICollection<UsuarioEmpresa> UsuarioEmpresas { get; } = new List<UsuarioEmpresa>();
 

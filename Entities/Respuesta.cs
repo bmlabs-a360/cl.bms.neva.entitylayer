@@ -15,7 +15,7 @@ public partial class Respuesta
 
     public Guid TipoImportanciaId { get; set; }
 
-    public Guid TipoDiferenciaRelacionadaId { get; set; }
+    public Guid? TipoDiferenciaRelacionadaId { get; set; }
 
     public int Valor { get; set; }
 
@@ -31,11 +31,9 @@ public partial class Respuesta
 
     public virtual EvaluacionEmpresa EvaluacionEmpresa { get; set; }
 
-    public virtual Usuario IdNavigation { get; set; }
-
     public virtual Pregunta Pregunta { get; set; }
 
-    public virtual TipoDiferenciaRelacionada TipoDiferenciaRelacionada { get; set; }
-
     public virtual TipoImportancia TipoImportancia { get; set; }
+
+    public virtual Usuario Usuario { get; set; }
 }

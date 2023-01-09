@@ -19,6 +19,8 @@ public partial class Evaluacion
 
     public virtual ICollection<EvaluacionEmpresa> EvaluacionEmpresas { get; } = new List<EvaluacionEmpresa>();
 
+    public virtual PlanMejora PlanMejora { get; set; }
+
     public virtual ICollection<Pregunta> Pregunta { get; } = new List<Pregunta>();
 
     public virtual ICollection<Reporte> Reportes { get; } = new List<Reporte>();

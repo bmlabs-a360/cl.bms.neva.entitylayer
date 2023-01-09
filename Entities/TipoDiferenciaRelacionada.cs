@@ -14,6 +14,4 @@ public partial class TipoDiferenciaRelacionada
     public bool? Activo { get; set; }
 
     public virtual ICollection<PlanMejora> PlanMejoras { get; } = new List<PlanMejora>();
-
-    public virtual ICollection<Respuesta> Respuesta { get; } = new List<Respuesta>();
 }
