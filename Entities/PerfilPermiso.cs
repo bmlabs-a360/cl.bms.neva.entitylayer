@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class PerfilPermiso
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class PerfilPermiso
+    {
+        public Guid Id { get; set; }
+        public Guid PerfilId { get; set; }
+        public string Nombre { get; set; }
+        public string Detalle { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public bool? Activo { get; set; }
 
-    public Guid PerfilId { get; set; }
-
-    public string Nombre { get; set; }
-
-    public string Detalle { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public virtual Perfil Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }
+    }
 }

@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class SegmentacionSubArea
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class SegmentacionSubArea
+    {
+        public SegmentacionSubArea()
+        {
+            ImportanciaEstrategicas = new HashSet<ImportanciaEstrategica>();
+            PlanMejoras = new HashSet<PlanMejora>();
+            Pregunta = new HashSet<Pregunta>();
+        }
 
-    public Guid SegmentacionAreaId { get; set; }
+        public Guid Id { get; set; }
+        public Guid SegmentacionAreaId { get; set; }
+        public string NombreSubArea { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public bool? Activo { get; set; }
 
-    public string NombreSubArea { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public virtual ICollection<ImportanciaEstrategica> ImportanciaEstrategicas { get; } = new List<ImportanciaEstrategica>();
-
-    public virtual ICollection<PlanMejora> PlanMejoras { get; } = new List<PlanMejora>();
-
-    public virtual ICollection<Pregunta> Pregunta { get; } = new List<Pregunta>();
-
-    public virtual SegmentacionArea SegmentacionArea { get; set; }
+        public virtual SegmentacionArea SegmentacionArea { get; set; }
+        public virtual ICollection<ImportanciaEstrategica> ImportanciaEstrategicas { get; set; }
+        public virtual ICollection<PlanMejora> PlanMejoras { get; set; }
+        public virtual ICollection<Pregunta> Pregunta { get; set; }
+    }
 }

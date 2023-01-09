@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class Reporte
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class Reporte
+    {
+        public Reporte()
+        {
+            ReporteAreas = new HashSet<ReporteArea>();
+            ReporteItems = new HashSet<ReporteItem>();
+        }
 
-    public Guid EvaluacionId { get; set; }
+        public Guid Id { get; set; }
+        public Guid EvaluacionId { get; set; }
+        public string Nombre { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public bool? Activo { get; set; }
 
-    public string Nombre { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public virtual Evaluacion Evaluacion { get; set; }
-
-    public virtual ICollection<ReporteArea> ReporteAreas { get; } = new List<ReporteArea>();
-
-    public virtual ICollection<ReporteItem> ReporteItems { get; } = new List<ReporteItem>();
+        public virtual Evaluacion Evaluacion { get; set; }
+        public virtual ICollection<ReporteArea> ReporteAreas { get; set; }
+        public virtual ICollection<ReporteItem> ReporteItems { get; set; }
+    }
 }

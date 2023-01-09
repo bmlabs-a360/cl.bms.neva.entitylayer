@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class ControlToken
+namespace neva.entities
 {
-    public Guid Id { get; set; }
-
-    public string Token { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
+    public partial class ControlToken
+    {
+        public Guid Id { get; set; }
+        public string Token { get; set; }
+        public bool? Activo { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+    }
 }

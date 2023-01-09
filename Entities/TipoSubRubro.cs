@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class TipoSubRubro
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class TipoSubRubro
+    {
+        public TipoSubRubro()
+        {
+            Empresas = new HashSet<Empresa>();
+        }
 
-    public Guid TipoRubroId { get; set; }
+        public Guid Id { get; set; }
+        public Guid TipoRubroId { get; set; }
+        public string Nombre { get; set; }
+        public string Detalle { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public bool? Activo { get; set; }
 
-    public string Nombre { get; set; }
-
-    public string Detalle { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public virtual ICollection<Empresa> Empresas { get; } = new List<Empresa>();
-
-    public virtual TipoRubro TipoRubro { get; set; }
+        public virtual TipoRubro TipoRubro { get; set; }
+        public virtual ICollection<Empresa> Empresas { get; set; }
+    }
 }

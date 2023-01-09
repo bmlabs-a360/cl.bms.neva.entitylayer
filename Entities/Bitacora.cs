@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class Bitacora
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class Bitacora
+    {
+        public Guid Id { get; set; }
+        public Guid UsuarioId { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime Fecha { get; set; }
 
-    public Guid UsuarioId { get; set; }
-
-    public string Descripcion { get; set; }
-
-    public DateTime Fecha { get; set; }
-
-    public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
+    }
 }

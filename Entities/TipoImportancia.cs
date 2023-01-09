@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace neva.entities;
+#nullable disable
 
-public partial class TipoImportancia
+namespace neva.entities
 {
-    public Guid Id { get; set; }
+    public partial class TipoImportancia
+    {
+        public TipoImportancia()
+        {
+            PlanMejoras = new HashSet<PlanMejora>();
+            Respuesta = new HashSet<Respuesta>();
+        }
 
-    public string Nombre { get; set; }
+        public Guid Id { get; set; }
+        public string Nombre { get; set; }
+        public string Detalle { get; set; }
+        public bool? Activo { get; set; }
+        public DateTime? FechaCreacion { get; set; }
 
-    public string Detalle { get; set; }
-
-    public bool? Activo { get; set; }
-
-    public DateTime? FechaCreacion { get; set; }
-
-    public virtual ICollection<PlanMejora> PlanMejoras { get; } = new List<PlanMejora>();
-
-    public virtual ICollection<Respuesta> Respuesta { get; } = new List<Respuesta>();
+        public virtual ICollection<PlanMejora> PlanMejoras { get; set; }
+        public virtual ICollection<Respuesta> Respuesta { get; set; }
+    }
 }
