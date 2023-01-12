@@ -28,21 +28,21 @@ namespace neva.entities
         public virtual DbSet<Perfil> Perfils { get; set; }
         public virtual DbSet<PerfilPermiso> PerfilPermisos { get; set; }
         public virtual DbSet<PlanMejora> PlanMejoras { get; set; }
-        public virtual DbSet<Preguntum> Pregunta { get; set; }
+        public virtual DbSet<Pregunta> Pregunta { get; set; }
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<ReporteArea> ReporteAreas { get; set; }
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
         public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
         public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
-        public virtual DbSet<Respuestum> Respuesta { get; set; }
+        public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
         public virtual DbSet<Seguimiento> Seguimientos { get; set; }
         public virtual DbSet<TipoCantidadEmpleado> TipoCantidadEmpleados { get; set; }
-        public virtual DbSet<TipoDiferenciaRelacionadum> TipoDiferenciaRelacionada { get; set; }
-        public virtual DbSet<TipoImportancium> TipoImportancia { get; set; }
+        public virtual DbSet<TipoDiferenciaRelacionada> TipoDiferenciaRelacionada { get; set; }
+        public virtual DbSet<TipoImportancia> TipoImportancia { get; set; }
         public virtual DbSet<TipoItemReporte> TipoItemReportes { get; set; }
-        public virtual DbSet<TipoNivelVentum> TipoNivelVenta { get; set; }
+        public virtual DbSet<TipoNivelVenta> TipoNivelVenta { get; set; }
         public virtual DbSet<TipoRubro> TipoRubros { get; set; }
         public virtual DbSet<TipoSubRubro> TipoSubRubros { get; set; }
         public virtual DbSet<TipoTamanoEmpresa> TipoTamanoEmpresas { get; set; }
@@ -503,7 +503,7 @@ namespace neva.entities
                     .HasConstraintName("fk_plan_mejora_tipo_importancia_id");
             });
 
-            modelBuilder.Entity<Preguntum>(entity =>
+            modelBuilder.Entity<Pregunta>(entity =>
             {
                 entity.ToTable("pregunta");
 
@@ -714,7 +714,7 @@ namespace neva.entities
                     .HasConstraintName("fk_reporte_item_nivel_subscripcion");
             });
 
-            modelBuilder.Entity<Respuestum>(entity =>
+            modelBuilder.Entity<Respuesta>(entity =>
             {
                 entity.ToTable("respuesta");
 
@@ -915,7 +915,7 @@ namespace neva.entities
                     .HasColumnName("nombre");
             });
 
-            modelBuilder.Entity<TipoDiferenciaRelacionadum>(entity =>
+            modelBuilder.Entity<TipoDiferenciaRelacionada>(entity =>
             {
                 entity.ToTable("tipo_diferencia_relacionada");
 
@@ -937,7 +937,7 @@ namespace neva.entities
                     .HasColumnName("nombre");
             });
 
-            modelBuilder.Entity<TipoImportancium>(entity =>
+            modelBuilder.Entity<TipoImportancia>(entity =>
             {
                 entity.ToTable("tipo_importancia");
 
@@ -991,7 +991,7 @@ namespace neva.entities
                 entity.Property(e => e.Orden).HasColumnName("orden");
             });
 
-            modelBuilder.Entity<TipoNivelVentum>(entity =>
+            modelBuilder.Entity<TipoNivelVenta>(entity =>
             {
                 entity.ToTable("tipo_nivel_venta");
 

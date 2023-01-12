@@ -28,8 +28,8 @@ namespace neva.entities
         public virtual Evaluacion IdNavigation { get; set; }
         public virtual SegmentacionArea SegmentacionArea { get; set; }
         public virtual SegmentacionSubArea SegmentacionSubArea { get; set; }
-        public virtual TipoDiferenciaRelacionadum TipoDiferenciaRelacionada { get; set; }
-        public virtual TipoImportancium TipoImportancia { get; set; }
+        public virtual TipoDiferenciaRelacionada TipoDiferenciaRelacionada { get; set; }
+        public virtual TipoImportancia TipoImportancia { get; set; }
         public virtual ICollection<Seguimiento> Seguimientos { get; set; }
     }
 }

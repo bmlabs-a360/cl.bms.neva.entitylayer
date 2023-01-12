@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace neva.entities
 {
-    public partial class Preguntum
+    public partial class Pregunta
     {
-        public Preguntum()
+        public Pregunta()
         {
             Alternativas = new HashSet<Alternativa>();
-            Respuesta = new HashSet<Respuestum>();
+            Respuesta = new HashSet<Respuesta>();
         }
 
         public Guid Id { get; set; }
@@ -27,6 +27,6 @@ namespace neva.entities
         public virtual SegmentacionArea SegmentacionArea { get; set; }
         public virtual SegmentacionSubArea SegmentacionSubArea { get; set; }
         public virtual ICollection<Alternativa> Alternativas { get; set; }
-        public virtual ICollection<Respuestum> Respuesta { get; set; }
+        public virtual ICollection<Respuesta> Respuesta { get; set; }
     }
 }
