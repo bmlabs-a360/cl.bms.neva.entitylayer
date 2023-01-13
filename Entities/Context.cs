@@ -32,6 +32,8 @@ namespace neva.entities
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<ReporteArea> ReporteAreas { get; set; }
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
+        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasico { get; set; }
+        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcion { get; set; }
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
@@ -648,6 +650,68 @@ namespace neva.entities
                     .HasForeignKey(d => d.TipoItemReporteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_item_tipo_item_reporte_id");
+            });
+
+            modelBuilder.Entity<ReporteItemNivelBasico>(entity =>
+            {
+                entity.ToTable("reporte_item_nivel_basico");
+
+                entity.Property(e => e.Id)
+                   .HasColumnName("id")
+                   .HasDefaultValueSql("gen_random_uuid()");
+
+                entity.Property(e => e.Activo)
+                    .HasColumnName("activo")
+                    .HasDefaultValueSql("true");
+
+                entity.Property(e => e.Detalle)
+                    .HasColumnType("character varying")
+                    .HasColumnName("detalle");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("fecha_creacion")
+                    .HasDefaultValueSql("now()");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.Property(e => e.Orden).HasColumnName("orden");
+
+                entity.HasOne(d => d.Reporte)
+                    .WithMany(p => p.ReporteItemNivelBasicos)
+                    .HasForeignKey(d => d.ReporteId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_reporte_item_nivel_basico");
+            });
+
+            modelBuilder.Entity<ReporteItemNivelSubscripcion>(entity =>
+            {
+                entity.ToTable("reporte_item_nivel_subscripcion");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.Property(e => e.Detalle)
+                   .HasMaxLength(1250)
+                   .HasColumnName("detalle");
+
+                entity.Property(e => e.Orden).HasColumnName("orden");
+
+                entity.Property(e => e.FechaCreacion)
+                  .HasColumnName("fecha_creacion")
+                  .HasDefaultValueSql("now()");
+
+                entity.Property(e => e.Activo)
+                    .HasColumnName("activo")
+                    .HasDefaultValueSql("true");
+
+                entity.HasOne(d => d.Reporte)
+                    .WithMany(p => p.ReporteItemNivelSubscripcions)
+                    .HasForeignKey(d => d.ReporteId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_reporte_item_nivel_subscripcion");
             });
 
             modelBuilder.Entity<Respuesta>(entity =>
