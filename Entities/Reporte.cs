@@ -23,7 +23,6 @@ namespace neva.entities
         public virtual Evaluacion Evaluacion { get; set; }
         public virtual ICollection<ReporteArea> ReporteAreas { get; set; }
         public virtual ICollection<ReporteItem> ReporteItems { get; set; }
-        public virtual ICollection<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
         public virtual ICollection<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
 
     }
