@@ -32,8 +32,13 @@ namespace neva.entities
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<ReporteArea> ReporteAreas { get; set; }
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
+<<<<<<< HEAD
         public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasico { get; set; }
         public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcion { get; set; }
+=======
+        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
+        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
+>>>>>>> cb74871fbd4358d8a5b54449f4012878bb3d17c9
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
@@ -654,11 +659,17 @@ namespace neva.entities
 
             modelBuilder.Entity<ReporteItemNivelBasico>(entity =>
             {
+<<<<<<< HEAD
                 entity.ToTable("reporte_item_nivel_basico");
 
                 entity.Property(e => e.Id)
                    .HasColumnName("id")
                    .HasDefaultValueSql("gen_random_uuid()");
+=======
+                entity.HasNoKey();
+
+                entity.ToTable("reporte_item_nivel_basico");
+>>>>>>> cb74871fbd4358d8a5b54449f4012878bb3d17c9
 
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
@@ -672,12 +683,23 @@ namespace neva.entities
                     .HasColumnName("fecha_creacion")
                     .HasDefaultValueSql("now()");
 
+<<<<<<< HEAD
                 entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
 
                 entity.Property(e => e.Orden).HasColumnName("orden");
 
                 entity.HasOne(d => d.Reporte)
                     .WithMany(p => p.ReporteItemNivelBasicos)
+=======
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Orden).HasColumnName("orden");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.HasOne(d => d.Reporte)
+                    .WithMany()
+>>>>>>> cb74871fbd4358d8a5b54449f4012878bb3d17c9
                     .HasForeignKey(d => d.ReporteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_item_nivel_basico");
@@ -685,6 +707,7 @@ namespace neva.entities
 
             modelBuilder.Entity<ReporteItemNivelSubscripcion>(entity =>
             {
+<<<<<<< HEAD
                 entity.ToTable("reporte_item_nivel_subscripcion");
 
                 entity.Property(e => e.Id)
@@ -703,12 +726,37 @@ namespace neva.entities
                   .HasColumnName("fecha_creacion")
                   .HasDefaultValueSql("now()");
 
+=======
+                entity.HasNoKey();
+
+                entity.ToTable("reporte_item_nivel_subscripcion");
+
+>>>>>>> cb74871fbd4358d8a5b54449f4012878bb3d17c9
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
                     .HasDefaultValueSql("true");
 
+<<<<<<< HEAD
                 entity.HasOne(d => d.Reporte)
                     .WithMany(p => p.ReporteItemNivelSubscripcions)
+=======
+                entity.Property(e => e.Detalle)
+                    .HasColumnType("character varying")
+                    .HasColumnName("detalle");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("fecha_creacion")
+                    .HasDefaultValueSql("now()");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Orden).HasColumnName("orden");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.HasOne(d => d.Reporte)
+                    .WithMany()
+>>>>>>> cb74871fbd4358d8a5b54449f4012878bb3d17c9
                     .HasForeignKey(d => d.ReporteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_item_nivel_subscripcion");
