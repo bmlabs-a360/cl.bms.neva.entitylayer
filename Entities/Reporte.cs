@@ -12,7 +12,6 @@ namespace neva.entities
             ReporteAreas = new HashSet<ReporteArea>();
             ReporteItemNivelBasicos = new HashSet<ReporteItemNivelBasico>();
             ReporteItems = new HashSet<ReporteItem>();
-            ReporteItemNivelBasicos = new HashSet<ReporteItemNivelBasico>();
         }
 
         public Guid Id { get; set; }
@@ -25,6 +24,5 @@ namespace neva.entities
         public virtual ICollection<ReporteArea> ReporteAreas { get; set; }
         public virtual ICollection<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
         public virtual ICollection<ReporteItem> ReporteItems { get; set; }
-
     }
 }

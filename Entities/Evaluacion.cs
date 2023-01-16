@@ -11,11 +11,9 @@ namespace neva.entities
         {
             Alternativas = new HashSet<Alternativa>();
             EvaluacionEmpresas = new HashSet<EvaluacionEmpresa>();
-            PlanMejoras = new HashSet<PlanMejora>();
             Pregunta = new HashSet<Pregunta>();
             Reportes = new HashSet<Reporte>();
             SegmentacionAreas = new HashSet<SegmentacionArea>();
-            Seguimientos = new HashSet<Seguimiento>();
             UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
         }
 
@@ -27,11 +25,9 @@ namespace neva.entities
 
         public virtual ICollection<Alternativa> Alternativas { get; set; }
         public virtual ICollection<EvaluacionEmpresa> EvaluacionEmpresas { get; set; }
-        public virtual ICollection<PlanMejora> PlanMejoras { get; set; }
         public virtual ICollection<Pregunta> Pregunta { get; set; }
         public virtual ICollection<Reporte> Reportes { get; set; }
         public virtual ICollection<SegmentacionArea> SegmentacionAreas { get; set; }
-        public virtual ICollection<Seguimiento> Seguimientos { get; set; }
         public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }
     }
 }

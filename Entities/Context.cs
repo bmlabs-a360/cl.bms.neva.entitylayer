@@ -32,12 +32,11 @@ namespace neva.entities
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<ReporteArea> ReporteAreas { get; set; }
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
-        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasico { get; set; }
-        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcion { get; set; }
+        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
+        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
-        public virtual DbSet<Seguimiento> Seguimientos { get; set; }
         public virtual DbSet<TipoCantidadEmpleado> TipoCantidadEmpleados { get; set; }
         public virtual DbSet<TipoDiferenciaRelacionada> TipoDiferenciaRelacionada { get; set; }
         public virtual DbSet<TipoImportancia> TipoImportancia { get; set; }
@@ -445,7 +444,7 @@ namespace neva.entities
 
                 entity.Property(e => e.AlternativaId).HasColumnName("alternativa_id");
 
-                entity.Property(e => e.EvaluacionId).HasColumnName("evaluacion_id");
+                entity.Property(e => e.EvaluacionEmpresaId).HasColumnName("evaluacion_empresa_id");
 
                 entity.Property(e => e.FechaCreacion)
                     .HasColumnName("fecha_creacion")
@@ -472,11 +471,11 @@ namespace neva.entities
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_plan_mejora_alternativa_id");
 
-                entity.HasOne(d => d.Evaluacion)
+                entity.HasOne(d => d.EvaluacionEmpresa)
                     .WithMany(p => p.PlanMejoras)
-                    .HasForeignKey(d => d.EvaluacionId)
+                    .HasForeignKey(d => d.EvaluacionEmpresaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_plan_mejora_evaluacion");
+                    .HasConstraintName("fk_plan_mejora_evaluacion_empresa");
 
                 entity.HasOne(d => d.SegmentacionArea)
                     .WithMany(p => p.PlanMejoras)
@@ -657,8 +656,8 @@ namespace neva.entities
                 entity.ToTable("reporte_item_nivel_basico");
 
                 entity.Property(e => e.Id)
-                   .HasColumnName("id")
-                   .HasDefaultValueSql("gen_random_uuid()");
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
@@ -672,9 +671,9 @@ namespace neva.entities
                     .HasColumnName("fecha_creacion")
                     .HasDefaultValueSql("now()");
 
-                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
-
                 entity.Property(e => e.Orden).HasColumnName("orden");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
 
                 entity.HasOne(d => d.Reporte)
                     .WithMany(p => p.ReporteItemNivelBasicos)
@@ -840,55 +839,6 @@ namespace neva.entities
                     .HasForeignKey(d => d.SegmentacionAreaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_segmentacion_sub_area_segmentacion_area_id");
-            });
-
-            modelBuilder.Entity<Seguimiento>(entity =>
-            {
-                entity.ToTable("seguimiento");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasDefaultValueSql("gen_random_uuid()");
-
-                entity.Property(e => e.Activo)
-                    .HasColumnName("activo")
-                    .HasDefaultValueSql("false");
-
-                entity.Property(e => e.EmpresaId).HasColumnName("empresa_id");
-
-                entity.Property(e => e.EvaluacionId).HasColumnName("evaluacion_id");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnName("fecha_creacion")
-                    .HasDefaultValueSql("now()");
-
-                entity.Property(e => e.FechaUltimoAcceso).HasColumnName("fecha_ultimo_acceso");
-
-                entity.Property(e => e.Madurez).HasColumnName("madurez");
-
-                entity.Property(e => e.PlanMejoraId).HasColumnName("plan_mejora_id");
-
-                entity.Property(e => e.PorcentajePlanMejora).HasColumnName("porcentaje_plan_mejora");
-
-                entity.Property(e => e.PorcentajeRespuestas).HasColumnName("porcentaje_respuestas");
-
-                entity.HasOne(d => d.Empresa)
-                    .WithMany(p => p.Seguimientos)
-                    .HasForeignKey(d => d.EmpresaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_seguimiento_empresa_id");
-
-                entity.HasOne(d => d.Evaluacion)
-                    .WithMany(p => p.Seguimientos)
-                    .HasForeignKey(d => d.EvaluacionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_seguimiento_evaluacion_id");
-
-                entity.HasOne(d => d.PlanMejora)
-                    .WithMany(p => p.Seguimientos)
-                    .HasForeignKey(d => d.PlanMejoraId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_seguimiento_plan_mejora_id");
             });
 
             modelBuilder.Entity<TipoCantidadEmpleado>(entity =>

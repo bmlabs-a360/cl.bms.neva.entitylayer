@@ -10,6 +10,7 @@ namespace neva.entities
         public EvaluacionEmpresa()
         {
             ImportanciaRelativas = new HashSet<ImportanciaRelativa>();
+            PlanMejoras = new HashSet<PlanMejora>();
             Respuesta = new HashSet<Respuesta>();
         }
 
@@ -23,6 +24,7 @@ namespace neva.entities
         public virtual Empresa Empresa { get; set; }
         public virtual Evaluacion Evaluacion { get; set; }
         public virtual ICollection<ImportanciaRelativa> ImportanciaRelativas { get; set; }
+        public virtual ICollection<PlanMejora> PlanMejoras { get; set; }
         public virtual ICollection<Respuesta> Respuesta { get; set; }
     }
 }
