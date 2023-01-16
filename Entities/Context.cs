@@ -32,8 +32,8 @@ namespace neva.entities
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<ReporteArea> ReporteAreas { get; set; }
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
-        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
-        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
+        public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasico { get; set; }
+        public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcion { get; set; }
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
@@ -657,8 +657,8 @@ namespace neva.entities
                 entity.ToTable("reporte_item_nivel_basico");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasDefaultValueSql("gen_random_uuid()");
+                   .HasColumnName("id")
+                   .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
@@ -672,9 +672,9 @@ namespace neva.entities
                     .HasColumnName("fecha_creacion")
                     .HasDefaultValueSql("now()");
 
-                entity.Property(e => e.Orden).HasColumnName("orden");
-
                 entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.Property(e => e.Orden).HasColumnName("orden");
 
                 entity.HasOne(d => d.Reporte)
                     .WithMany(p => p.ReporteItemNivelBasicos)
