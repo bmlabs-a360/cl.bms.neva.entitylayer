@@ -7,6 +7,11 @@ namespace neva.entities
 {
     public partial class PlanMejora
     {
+
+        public PlanMejora()
+        {
+            Seguimientos = new HashSet<Seguimiento>();
+        }
         public Guid Id { get; set; }
         public Guid PreguntaId { get; set; }
         public Guid SegmentacionAreaId { get; set; }
@@ -25,5 +30,7 @@ namespace neva.entities
         public virtual SegmentacionSubArea SegmentacionSubArea { get; set; }
         public virtual TipoDiferenciaRelacionada TipoDiferenciaRelacionada { get; set; }
         public virtual TipoImportancia TipoImportancia { get; set; }
+        public virtual ICollection<Seguimiento> Seguimientos { get; set; }
+
     }
 }

@@ -841,6 +841,55 @@ namespace neva.entities
                     .HasConstraintName("fk_segmentacion_sub_area_segmentacion_area_id");
             });
 
+            modelBuilder.Entity<Seguimiento>(entity =>
+            {
+                entity.ToTable("seguimiento");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
+
+                entity.Property(e => e.Activo)
+                    .HasColumnName("activo")
+                    .HasDefaultValueSql("false");
+
+                entity.Property(e => e.EmpresaId).HasColumnName("empresa_id");
+
+                entity.Property(e => e.EvaluacionId).HasColumnName("evaluacion_id");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("fecha_creacion")
+                    .HasDefaultValueSql("now()");
+
+                entity.Property(e => e.FechaUltimoAcceso).HasColumnName("fecha_ultimo_acceso");
+
+                entity.Property(e => e.Madurez).HasColumnName("madurez");
+
+                entity.Property(e => e.PlanMejoraId).HasColumnName("plan_mejora_id");
+
+                entity.Property(e => e.PorcentajePlanMejora).HasColumnName("porcentaje_plan_mejora");
+
+                entity.Property(e => e.PorcentajeRespuestas).HasColumnName("porcentaje_respuestas");
+
+                entity.HasOne(d => d.Empresa)
+                    .WithMany(p => p.Seguimientos)
+                    .HasForeignKey(d => d.EmpresaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_seguimiento_empresa_id");
+
+                entity.HasOne(d => d.Evaluacion)
+                    .WithMany(p => p.Seguimientos)
+                    .HasForeignKey(d => d.EvaluacionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_seguimiento_evaluacion_id");
+
+                entity.HasOne(d => d.PlanMejora)
+                    .WithMany(p => p.Seguimientos)
+                    .HasForeignKey(d => d.PlanMejoraId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_seguimiento_plan_mejora_id");
+            });
+
             modelBuilder.Entity<TipoCantidadEmpleado>(entity =>
             {
                 entity.ToTable("tipo_cantidad_empleado");

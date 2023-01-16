@@ -15,6 +15,7 @@ namespace neva.entities
             Reportes = new HashSet<Reporte>();
             SegmentacionAreas = new HashSet<SegmentacionArea>();
             UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
+            Seguimientos = new HashSet<Seguimiento>();
         }
 
         public Guid Id { get; set; }
@@ -29,5 +30,6 @@ namespace neva.entities
         public virtual ICollection<Reporte> Reportes { get; set; }
         public virtual ICollection<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }
+        public virtual ICollection<Seguimiento> Seguimientos { get; set; }
     }
 }

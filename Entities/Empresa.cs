@@ -13,6 +13,7 @@ namespace neva.entities
             UsuarioEmpresas = new HashSet<UsuarioEmpresa>();
             UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
             Usuarios = new HashSet<Usuario>();
+            Seguimientos = new HashSet<Seguimiento>();
         }
 
         public Guid Id { get; set; }
@@ -36,5 +37,6 @@ namespace neva.entities
         public virtual ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
         public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Seguimiento> Seguimientos { get; set; }
     }
 }
