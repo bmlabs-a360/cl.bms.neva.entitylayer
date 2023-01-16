@@ -472,11 +472,11 @@ namespace neva.entities
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_plan_mejora_alternativa_id");
 
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.PlanMejora)
-                    .HasForeignKey<PlanMejora>(d => d.Id)
+                entity.HasOne(d => d.Evaluacion)
+                    .WithMany(p => p.PlanMejoras)
+                    .HasForeignKey(d => d.EvaluacionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("plan_mejora_fk");
+                    .HasConstraintName("fk_plan_mejora_evaluacion");
 
                 entity.HasOne(d => d.SegmentacionArea)
                     .WithMany(p => p.PlanMejoras)
@@ -654,9 +654,11 @@ namespace neva.entities
 
             modelBuilder.Entity<ReporteItemNivelBasico>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("reporte_item_nivel_basico");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
@@ -670,14 +672,12 @@ namespace neva.entities
                     .HasColumnName("fecha_creacion")
                     .HasDefaultValueSql("now()");
 
-                entity.Property(e => e.Id).HasColumnName("id");
-
                 entity.Property(e => e.Orden).HasColumnName("orden");
 
                 entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
 
                 entity.HasOne(d => d.Reporte)
-                    .WithMany()
+                    .WithMany(p => p.ReporteItemNivelBasicos)
                     .HasForeignKey(d => d.ReporteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_item_nivel_basico");
@@ -701,7 +701,9 @@ namespace neva.entities
                     .HasColumnName("fecha_creacion")
                     .HasDefaultValueSql("now()");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
 
                 entity.Property(e => e.Orden).HasColumnName("orden");
 

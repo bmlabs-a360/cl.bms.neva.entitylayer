@@ -25,7 +25,7 @@ namespace neva.entities
         public Guid EvaluacionId { get; set; }
 
         public virtual Alternativa Alternativa { get; set; }
-        public virtual Evaluacion IdNavigation { get; set; }
+        public virtual Evaluacion Evaluacion { get; set; }
         public virtual SegmentacionArea SegmentacionArea { get; set; }
         public virtual SegmentacionSubArea SegmentacionSubArea { get; set; }
         public virtual TipoDiferenciaRelacionada TipoDiferenciaRelacionada { get; set; }
