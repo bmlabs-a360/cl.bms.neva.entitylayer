@@ -37,6 +37,7 @@ namespace neva.entities
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
+        public virtual DbSet<Seguimiento> Seguimientos { get; set; }
         public virtual DbSet<TipoCantidadEmpleado> TipoCantidadEmpleados { get; set; }
         public virtual DbSet<TipoDiferenciaRelacionada> TipoDiferenciaRelacionada { get; set; }
         public virtual DbSet<TipoImportancia> TipoImportancia { get; set; }
