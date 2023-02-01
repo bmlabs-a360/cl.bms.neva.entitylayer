@@ -34,6 +34,7 @@ namespace neva.entities
         public virtual DbSet<ReporteItem> ReporteItems { get; set; }
         public virtual DbSet<ReporteItemNivelBasico> ReporteItemNivelBasicos { get; set; }
         public virtual DbSet<ReporteItemNivelSubscripcion> ReporteItemNivelSubscripcions { get; set; }
+        public virtual DbSet<ReporteRecomendacionArea> ReporteRecomendacionAreas { get; set; }
         public virtual DbSet<Respuesta> Respuesta { get; set; }
         public virtual DbSet<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual DbSet<SegmentacionSubArea> SegmentacionSubAreas { get; set; }
@@ -714,6 +715,39 @@ namespace neva.entities
                     .HasForeignKey(d => d.ReporteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_item_nivel_subscripcion");
+            });
+
+            modelBuilder.Entity<ReporteRecomendacionArea>(entity =>
+            {
+                entity.ToTable("reporte_recomendacion_area");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasDefaultValueSql("gen_random_uuid()");
+
+                entity.Property(e => e.Activo)
+                    .HasColumnName("activo")
+                    .HasDefaultValueSql("false");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("fecha_creacion")
+                    .HasDefaultValueSql("now()");
+
+                entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
+
+                entity.Property(e => e.SegmentacionAreaId).HasColumnName("segmentacion_area_id");
+
+                entity.HasOne(d => d.Reporte)
+                    .WithMany(p => p.ReporteRecomendacionAreas)
+                    .HasForeignKey(d => d.ReporteId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_reporte_recomendacion_area_reporte_id");
+
+                entity.HasOne(d => d.SegmentacionArea)
+                    .WithMany(p => p.ReporteRecomendacionAreas)
+                    .HasForeignKey(d => d.SegmentacionAreaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_reporte_recomendacion_segmentacion_area_id");
             });
 
             modelBuilder.Entity<Respuesta>(entity =>
