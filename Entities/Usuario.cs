@@ -9,7 +9,6 @@ namespace neva.entities
     {
         public Usuario()
         {
-            Bitacoras = new HashSet<Bitacora>();
             Respuesta = new HashSet<Respuesta>();
             UsuarioEmpresas = new HashSet<UsuarioEmpresa>();
             UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
@@ -29,7 +28,6 @@ namespace neva.entities
 
         public virtual Empresa Empresa { get; set; }
         public virtual Perfil Perfil { get; set; }
-        public virtual ICollection<Bitacora> Bitacoras { get; set; }
         public virtual ICollection<Respuesta> Respuesta { get; set; }
         public virtual ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
         public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }

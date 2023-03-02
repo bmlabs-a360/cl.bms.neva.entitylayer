@@ -11,7 +11,5 @@ namespace neva.entities
         public Guid UsuarioId { get; set; }
         public string Descripcion { get; set; }
         public DateTime Fecha { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
     }
 }

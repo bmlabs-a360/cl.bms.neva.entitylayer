@@ -15,7 +15,6 @@ namespace neva.entities
             Reportes = new HashSet<Reporte>();
             SegmentacionAreas = new HashSet<SegmentacionArea>();
             UsuarioEvaluacions = new HashSet<UsuarioEvaluacion>();
-            Seguimientos = new HashSet<Seguimiento>();
         }
 
         public Guid Id { get; set; }
@@ -23,6 +22,7 @@ namespace neva.entities
         public string TiempoLimite { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public bool? Activo { get; set; }
+        public bool? Default { get; set; }
 
         public virtual ICollection<Alternativa> Alternativas { get; set; }
         public virtual ICollection<EvaluacionEmpresa> EvaluacionEmpresas { get; set; }
@@ -30,6 +30,5 @@ namespace neva.entities
         public virtual ICollection<Reporte> Reportes { get; set; }
         public virtual ICollection<SegmentacionArea> SegmentacionAreas { get; set; }
         public virtual ICollection<UsuarioEvaluacion> UsuarioEvaluacions { get; set; }
-        public virtual ICollection<Seguimiento> Seguimientos { get; set; }
     }
 }
