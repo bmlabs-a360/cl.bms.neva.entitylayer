@@ -655,7 +655,7 @@ namespace neva.entities
                     .HasDefaultValueSql("true");
 
                 entity.Property(e => e.Detalle)
-                    .HasColumnType("character varying")
+                    .HasMaxLength(3000)
                     .HasColumnName("detalle");
 
                 entity.Property(e => e.FechaCreacion)
@@ -684,7 +684,7 @@ namespace neva.entities
                     .HasDefaultValueSql("true");
 
                 entity.Property(e => e.Detalle)
-                    .HasColumnType("character varying")
+                    .HasMaxLength(3000)
                     .HasColumnName("detalle");
 
                 entity.Property(e => e.FechaCreacion)
@@ -737,7 +737,6 @@ namespace neva.entities
                     .HasForeignKey(d => d.SegmentacionAreaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reporte_recomendacion_area_segmentacion__area_id");
-
             });
 
             modelBuilder.Entity<Respuesta>(entity =>
