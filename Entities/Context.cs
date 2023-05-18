@@ -168,6 +168,10 @@ namespace neva.entities
                     .HasColumnName("activo")
                     .HasDefaultValueSql("false");
 
+                entity.Property(e => e.DatosCompletados)
+                    .HasColumnName("datos_completados")
+                    .HasDefaultValueSql("false");
+
                 entity.Property(e => e.Comuna)
                     .HasMaxLength(250)
                     .HasColumnName("comuna");
@@ -1093,6 +1097,9 @@ namespace neva.entities
                 entity.Property(e => e.Activo)
                     .HasColumnName("activo")
                     .HasDefaultValueSql("false");
+                entity.Property(e => e.EmailVerificado)
+                    .HasColumnName("email_verificado")
+                    .HasDefaultValueSql("false");             
 
                 entity.Property(e => e.Email)
                     .IsRequired()

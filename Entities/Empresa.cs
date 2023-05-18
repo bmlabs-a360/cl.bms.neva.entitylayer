@@ -26,6 +26,7 @@ namespace neva.entities
         public Guid? TipoCantidadEmpleadoId { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public bool? Activo { get; set; }
+        public bool? DatosCompletados { get; set; }
 
         public virtual TipoCantidadEmpleado TipoCantidadEmpleado { get; set; }
         public virtual TipoNivelVenta TipoNivelVenta { get; set; }

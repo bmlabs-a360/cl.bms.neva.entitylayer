@@ -25,6 +25,7 @@ namespace neva.entities
         public DateTime? FechaUltimoAcceso { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public bool? Activo { get; set; }
+        public bool? EmailVerificado { get; set; }
 
         public virtual Empresa Empresa { get; set; }
         public virtual Perfil Perfil { get; set; }
